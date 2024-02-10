@@ -37,7 +37,7 @@ public class ProductInfo {
         System.out.println("Получившаяся сумма без скидки: " + amountWithoutDiscount);
 
         if (DISCOUNT == 0) {
-            System.out.println("Дарагой, скидка нету");
+            System.out.println("Скидки нет");
 
         } else if (DISCOUNT > 0) {
             double convertedDiscount = convertDiscountToCoef(DISCOUNT);
