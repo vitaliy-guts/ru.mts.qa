@@ -29,19 +29,19 @@ public class ProductInfo {
     }
 
     // метод, который считает общую сумму товара со скидкой и без
-    public void calculateAmount() {
+    public static void calculateAmount(ProductInfo productInfo) {
         double amountWithDiscount;
         double amountWithoutDiscount;
 
-        amountWithoutDiscount = roundToNDecimals((QUANTITY * PRICE), 2);
+        amountWithoutDiscount = roundToNDecimals((productInfo.QUANTITY * productInfo.PRICE), 2);
         System.out.println("Получившаяся сумма без скидки: " + amountWithoutDiscount);
 
-        if (DISCOUNT == 0) {
+        if (productInfo.DISCOUNT == 0) {
             System.out.println("Скидки нет");
 
-        } else if (DISCOUNT > 0) {
-            double convertedDiscount = convertDiscountToCoef(DISCOUNT);
-            amountWithDiscount = roundToNDecimals(QUANTITY * PRICE * convertedDiscount, 2);
+        } else if (productInfo.DISCOUNT > 0) {
+            double convertedDiscount = convertDiscountToCoef(productInfo.DISCOUNT);
+            amountWithDiscount = roundToNDecimals(productInfo.QUANTITY * productInfo.PRICE * convertedDiscount, 2);
             System.out.println("Получившаяся сумма со скидкой: " + amountWithDiscount);
 
         } else {
@@ -63,6 +63,6 @@ public class ProductInfo {
      * Пример: 15% -> 0.85
      */
     private static double convertDiscountToCoef(double discount) {
-        return 100 - (discount / 100);
+        return (100 - discount) / 100;
     }
 }
